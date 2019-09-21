@@ -1,6 +1,6 @@
 var rule = {
         conditions: [new chrome.declarativeContent.PageStateMatcher({
-          pageUrl: {hostContains: 'facebook.com'},
+          pageUrl: {hostContains: 'youtube.com'},
         })
         ],
             actions: [new chrome.declarativeContent.ShowPageAction()]
