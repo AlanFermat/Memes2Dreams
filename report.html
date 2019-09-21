@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Element');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Nitrogen', 0.78],
+        ['Oxygen', 0.21],
+        ['Other', 0.01]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+      chart.draw(data, null);
+    }
+  </script>
+</head>
+<body>
+	<div class="row">
+	<div class="col-sm-4 text-center">
+    <h1>This is your report. Check this out!</h1>
+	
+  <!-- Identify where the chart should be drawn. -->
+  
+  <div class="col-sm-4" id="myPieChart" style="width:300px; height: 300px;"></div>
+  <div class="col-sm-4"><img src="images/smile.png" width="200" height="200"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="popup3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title></title>
+</head>
+<body>
+  <div class="wrapper">
+        <div class="card radius shadowDepth1">
+          <div class="card__image border-tlr-radius">
+            <img src="images/sad.png" alt="image" class="border-tlr-radius">
+                </div>
+          <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="https://www.facebook.com"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="https://www.twitter.com"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon instagram" href="https://www.instagram.com"><span class="fa fa-instagram"></span></a>
+                        </div>
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+            <div class="card__meta">
+              <a href="#">Fighting AIDS</a>
+                        <time>September 20th </time>
+            </div>
+
+            <article class="card__article">
+              <h2>You have read 50 memes in 2 hours.</h2>
+              <h2>Every 5 minute, one person dies due to AIDS in Africa.</h2>
+            </article>
+          </div>
+
+          <div class="card__action">
+            
+            <div class="card__author">
+              <div class="card__author-content">
+                By <a href="#">Author</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+            <p class="text-center">Created By <a href="#">Memes2Dreams</a></p>
+      </div>
+</body>
+<script type="text/javascript">
+  $(document).ready(function($) {
+  $('.card__share > a').on('click', function(e){ 
+    e.preventDefault() // prevent default action - hash doesn't appear in url
+      $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
+    $(this).toggleClass('share-expanded');
+    });
+  
+});
+</script>
+</html>
+
+
