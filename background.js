@@ -31,9 +31,17 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (var key in changes) {
     var storageChange = changes[key];
-    if (key == "meme") {
-      var c = storageChange.newValue[key];
-      if (c == 1) {
+    if (key === "meme") {
+
+      var c = 0;
+      for (var keyword in storageChange.newValue) {
+            console.log(storageChange.newValue[keyword]+ "\n");
+            c += storageChange.newValue[keyword];
+      }
+
+      console.log(c);
+
+      if (c === 1) {
         display(1, c);
       } else if (c >= 10) {
         display(3, c);
