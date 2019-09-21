@@ -1,9 +1,80 @@
 let memeButton = document.getElementById("trackmeme_button");
 let memeInput = document.getElementById("memeinput");
+var social_issues = ['Climate Change', 'AIDS+', 'Immigration', 'Gun Reform', 'Cancer'];
+let num_of_social_issues = 6;
 memeButton.onclick = function(element) {
 	var memeOutput = document.getElementById("memeoutput");
-	memeOutput.innerHTML = memeInput.value;
+	var meme = memeInput.value;
+	addMemeKeyword(meme);
+	memeOutput.innerHTML = meme;
 };
+
+for (var i = 0; i < num_of_social_issues; i++) {
+	var name = "issue" + (i+1).toString();
+	var issue = document.getElementById(name);
+	issue.addEventListener('click', function() {
+		if (this.style.type !== 'submit') {
+			this.style.type = 'submit';
+			this.style.cssText = "background: #ff0000;";
+			addSocialIssueKeyword(this.innerHTML);
+		} else {
+			this.style.type = 'button';
+			this.style.cssText = "background: #c19fcc;";
+			deleteSocialIssueKeyword(this.innerHTML);
+		}
+		console.log("You clicked:", this.innerHTML);
+	});
+}
+
+
+
+function addSocialIssueKeyword(keyword) {
+	chrome.storage.sync.get("socialIssue", function(result) {
+		result.socialIssue.push(keyword);
+		console.log(result.socialIssue);
+		chrome.storage.sync.set({"socialIssue":result.socialIssue}, function(){
+        	console.log("updating");
+        });
+	});
+}
+
+
+function deleteSocialIssueKeyword(keyword) {
+	chrome.storage.sync.get("socialIssue", function(result) {
+		var idx = result.socialIssue.indexOf(keyword);
+      	if (idx !== -1) {
+      		result.socialIssue.splice(idx, 1);
+      	}
+      	chrome.storage.sync.set({"socialIssue":result.socialIssue}, function(){
+        	console.log("updating");
+        });
+    });
+}
+
+
+function addMemeKeyword(keyword) {
+    chrome.storage.sync.get("meme", function(result) {
+      if (result.meme[keyword] === undefined) {
+        result.meme[keyword] = 0;
+        chrome.storage.sync.set({"meme":result.meme}, function(){
+        	console.log("updating");
+        });
+      }
+    });
+}
+
+function deleteMemeKeyword(keyword) {
+    chrome.storage.sync.get("meme", function(result) {
+
+      // var memes = result.key;
+      if (result.meme[keyword] !== undefined) {
+          delete result.meme[keyword];
+      }
+    });
+}
+
+
+
 let report = document.getElementById("report_button");
 let close_button = document.getElementById('close_report');
 report.onclick = function() {
@@ -12,6 +83,7 @@ report.onclick = function() {
 	var x = document.getElementById("displayed");
 	loadHTML("report.html", processHTML, x, y);
 }
+
 
 
 /**
