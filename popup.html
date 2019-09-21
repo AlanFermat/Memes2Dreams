@@ -5,7 +5,6 @@
         <link type="text/css" href="styles.scss" rel="stylesheet">
 
         <style>
-
           .container{
                     position: relative;
                     height: 600px;
@@ -159,14 +158,18 @@
           <button class="issuebutton" id="issue1">Climate Change</button> <button class="issuebutton" id="issue2">LGBTQ+</button> <button class="issuebutton" id="issue5">AIDS</button><br>
           <button class="issuebutton" id="issue3">Immigration</button> <button class="issuebutton" id="issue4">Gun Reform</button> <button class="issuebutton" id="issue6">Cancer</button><br> 
           </div>
-
+          <div id="storage" style="display:none;"></div>
           <button class="reportbutton" id="report_button">Get Report</button> <!-- Get report button -->
-
+          
 
       </div>
+      <div id="displayed">
+        
+      </div>
+      <button id="close_report" style="display: none;">Close</button>
 
-      <script type="text/javascript" src="popup.js"> 
-      </script>
+      <script type="text/javascript" src="popup.js"> </script>
+      <script type="text/javascript" src="ajax.js"> </script>
 
     </body>
   </html>
