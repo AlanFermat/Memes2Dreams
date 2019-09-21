@@ -1,5 +1,6 @@
+let memeButton = document.getElementById("trackmeme_button");
 let memeInput = document.getElementById("memeinput");
-memeInput.onclick = function(element) {
+memeButton.onclick = function(element) {
 	var memeOutput = document.getElementById("memeoutput");
 	memeOutput.innerHTML = memeInput.value;
 };
