@@ -1,9 +1,20 @@
-function display(arg, count) {
+function display(arg, count, img_src = undefined, href=undefined, head_line = undefined) {
 	if (arg == 1 || arg == 2) {
 		alert("You have read "+ count+
 			" instances of memes!\nRemember your goals! Waste less time on memes!");
 	} else if (arg == 3) {
-		alert("You have read "+ count+"\npost");
+		var r = window.confirm("You have read "+ count+
+			" instances of memes!\n"+
+			"Do you want to share some meaningful posts for redemption?");
+	  	if (r == true) {
+		    var news_window = window.open("popup3.html");
+		    if (img_src !== undefined) {
+		    	news_window.img_src = img_src;
+		    	news_window.href = href;
+		    	news_window.head_line = head_line;
+		    	console.log(news_window.img_src);
+		    }
+	  	}
 	} else {
 		alert("err");
 	}

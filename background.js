@@ -6,6 +6,8 @@ var rule = {
             actions: [new chrome.declarativeContent.ShowPageAction()]
       };
 
+var news_to_be_shown = undefined;
+
 function initStorage() {
     chrome.storage.sync.clear(function() {
       var error = chrome.runtime.lastError;
@@ -27,6 +29,31 @@ chrome.runtime.onInstalled.addListener(function() {
     });
   });
 
+function retrieveNews(strSocialIssue) {
+    var allNews = [];
+    var issueCall = 'q=' + strSocialIssue +'&';
+    var url = 'https://newsapi.org/v2/everything?' +
+           'language=en&' +
+          issueCall +
+         'apiKey=b8b1367fefdb4995a117ca642f6a87aa';
+    var req = new Request(url);
+    fetch(req)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            var rand_num = Math.floor(Math.random() * data.articles.length);
+            var i;
+            for(i = 0; i < data.articles.length; i++) {
+               newsSubset = [];
+               newsSubset.push(data.articles[i].title, data.articles[i].url, data.articles[i].urlToImage);
+               allNews.push(newsSubset)
+            }
+        var final_news = allNews[rand_num];
+        news_to_be_shown = final_news;
+  })  
+}
+
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (var key in changes) {
@@ -43,10 +70,25 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       console.log(c);
 
       if (c === 1) {
-
         display(1, c);
       } else if (c >= 10) {
-        display(3, c);
+        chrome.storage.sync.get("socialIssue", function(result) {
+          var candidates = result.socialIssue;
+          console.log(candidates);
+
+        if (candidates.length !== 0) {
+          
+          console.log(candidates);
+          var social_issue = candidates[Math.floor(Math.random() * candidates.length)];
+          retrieveNews(social_issue);
+          console.log(news_to_be_shown);
+          var image_src = news_to_be_shown[2];
+          var head_line = news_to_be_shown[0];
+          var href = news_to_be_shown[1];
+          display(3, c, img_src = image_src, href = href, head_line = head_line);
+          }
+        });
+        
       } else if (c >= 5) {
         display(2, c);
       }
