@@ -86,7 +86,7 @@
 
 // Logic for adding keywords
 
-var social_issues = ['Climate Change', 'AIDS+', 'Immigration', 'Gun Reform', 'Cancer'];
+var social_issues = ['Climate Change', 'LGBTQ', 'AIDS', 'Immigration', 'Gun Reform', 'Cancer'];
 let num_of_social_issues = 6;
 
 for (var i = 0; i < num_of_social_issues; i++) {
@@ -157,7 +157,6 @@ function deleteMemeKeyword(keyword) {
 
 let report = document.getElementById("report_button");
 let report_body = document.getElementById('displayed');
-let close_button = document.getElementById('close_report');
 report.onclick = function() {
 	// close_button.style.cssText = 'display: inline;';
 	// report_body.load("report.html");
@@ -232,24 +231,5 @@ function processHTML(temp, target)
 {
 	target.innerHTML = temp.innerHTML;
 }
-
-
-
-
-
-
-close_button.onclick = function(element) {
-  report_body.innerHTML = null;
-  close_button.style.cssText = 'display: none;';
-}
-
-
-
-
-
-
-
-
-
 
 

@@ -2,15 +2,18 @@
   <html lang='en'>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <!-- <link type="text/css" href="styles.scss" rel="stylesheet"> -->
+        
         <style>
           .container{
             position: relative;
-            height: 600px;
+            height: 630px;
             width: 350px;
           }
           
           .title {
             font-family: 'Didact Gothic';
+            font-weight: bold;
             font-size: 30px;
             position: absolute;
             top: 60px;
@@ -19,7 +22,7 @@
           }
 
           .logo {
-            size: 50%;
+            width: 38%;
             position: absolute;
             left: 110px;
             top: -10px;
@@ -29,54 +32,92 @@
             font-family:'Didact Gothic';
             font-size: 20px;
             position: absolute;
-            top: 120px;
+            top: 140px;
             left: 20px;
+          }
+
+          .memetitle {
+            top: 50px;
+            left: 10px;
+            text-decoration: underline;
+          }
+
+          .issuetitle {
+            text-decoration: underline;
+            position: center;
+            left: 50px;
           }
           
           .issues {
             font-family: 'Didact Gothic';
-            font-weight: 400;
             font-size: 20px;
             position: absolute;
-            top: 300px;
+            top: 340px;
             left: 20px;
           }
           
           .trackmemebutton {
             color: white;
             border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 5px 6px #d5d5d5;
             position: absolute;
-            top: 150px;
+            top: 200px;
             background: #5d2d6d;
             padding:10px;
             font-size:15px;
           }
-          
-          .issuebutton {
+
+          .trackmemebutton:hover {
+            background-color: #000000;
             color: white;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s linear;
+            cursor: pointer;
+          }
+          
+          .button-2row {
+            position: relative;
+            bottom: -5px;
+          }
+
+
+          .issuebutton {
+            color: #5d2d6d;
             border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            background: #c19fcc;
-            padding:10px;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 5px 6px #d5d5d5;
+            background: #ffffff;
+            padding: 10px;
             font-size:15px;
+            cursor: pointer;
           }
           
           .reportbutton {
             color: white;
             position: absolute;
-            bottom: 50px;
+            bottom: 70px;
             left: 20px;
             border-radius: 4px;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 5px 6px #d5d5d5;
             background: #000000;
-            padding:10px;
+            padding: 10px;
             font-size:15px;
+          }
+
+          .reportbutton:hover {
+            background-color: #b594bf;
+            color: white;
+            transition: all 0.3s linear;
+            cursor: pointer;
           }
             
           .tags-input {
             border: 1px;
             display: inline-block;
+            top: 50px;
+            left: 5px;
           }
 
           .tags-input .tag {
@@ -111,26 +152,34 @@
               outline: 0;
               padding: 0.5em;
           } 
+
+          .copyright {
+            color:darkgray;
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+          }
+
         </style>    
   </head>
     <body>
         <div class="container">
-          <img class="logo" src="images/M2D128.png">
+          <img class="logo" src="images/M2D720.png">
           <p class="title">Memes To Dreams</p> <!-- Title -->
           <div class="memes"> <!-- Meme input -->
-            <p>Track Memes</p> 
+            <p class="memetitle">What Memes Do You Enjoy?</p><p id="warning" style="font-size: 12px; color:#5d2d6d;"></p>
             <p>
               <div class="tags-input" data-name="tags-input"> 
-              <button class="trackmemebutton" id="thisbutton">Add Meme</button> 
               </div>
             </p>
           </div>
         
           <div class="issues"> <!-- Issue buttons -->
-            <p>Social Issue</p> 
+            <p class="issuetitle">Which Dreams Matter To You?</p> 
             <div class="button-1row"><button class="issuebutton" id="issue1">Climate Change</button> 
               <button class="issuebutton" id="issue2">LGBTQ+</button> 
-              <button class="issuebutton" id="issue5">AIDS</button><br>
+              <!-- <button class="issuebutton" id="issue5">AIDS</button> -->
+              <br>
             </div>
             <div class="button-2row"><button class="issuebutton" id="issue3">Immigration</button> 
               <button class="issuebutton" id="issue4">Gun Reform</button> 
@@ -140,10 +189,11 @@
 
           <button class="reportbutton" id="report_button">Get Report</button> <!-- Get report button -->
 
-
+          <p class="copyright">Copyright Hack Rice 9, 2019</p>
       </div>
 
       <script type="text/javascript" src="popup.js"> 
+      
       </script>
 
     </body>
