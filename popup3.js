@@ -4,13 +4,12 @@ let link = document.getElementById('link_to_article');
 let share_toggle = document.getElementById('card__share');
 let social_bar = document.getElementById('card__social');
 
-image.onclick = function (argument) {
-	console.log(window.href);
-	image.src = window.img_src;
-	head_line.href = window.href;
-	head_line.innerHTML = window.head_line;
-	link.innerHTML = window.href;
-};
+console.log(window.href);
+image.src = window.img_src;
+head_line.href = window.href;
+head_line.innerHTML = window.head_line;
+link.innerHTML = window.href;
+
 
 share_toggle.onclick = function (e) {
 	console.log(social_bar);
