@@ -125,7 +125,6 @@
               <button class="trackmemebutton" id="thisbutton">Add Meme</button> 
               </div>
             </p>
-<!--             <button class="trackbutton" id="tracker">Track Memes</button> -->
           </div>
         
           <div class="issues"> <!-- Issue buttons -->
@@ -139,14 +138,17 @@
               <button class="issuebutton" id="issue6">Cancer</button><br> 
             </div>
           </div>
+          <div id="storage" style="display: none;"></div>
 
           <button class="reportbutton" id="report_button">Get Report</button> <!-- Get report button -->
 
 
       </div>
+      <div id="displayed"></div>
+      <button id="close_report" style="display: none;">Hide report</button>
 
-      <script type="text/javascript" src="popup.js"> 
-      </script>
+      <script type="text/javascript" src="popup.js"></script> 
+      <script type="text/javascript" src="ajax.js"></script>
 
     </body>
   </html>
