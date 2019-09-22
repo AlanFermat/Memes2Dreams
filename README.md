@@ -1,5 +1,5 @@
 # Memes2Dreams
-- Less memes more actions towards your dreams!
+- Fewer memes more actions towards your dreams!
 
 ## Inspiration
 
