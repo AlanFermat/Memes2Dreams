@@ -144,12 +144,16 @@ function deleteMemeKeyword(keyword) {
 
 
 let report = document.getElementById("report_button");
+let report_body = document.getElementById('displayed');
 let close_button = document.getElementById('close_report');
 report.onclick = function() {
-	close_button.style.cssText = 'display: inline;';
-	var y = document.getElementById("storage");
-	var x = document.getElementById("displayed");
-	loadHTML("report.html", processHTML, x, y);
+	// close_button.style.cssText = 'display: inline;';
+	// report_body.load("report.html");
+	chrome.storage.sync.get("meme", function(result) {
+		var res = result.meme;
+		var new_window = window.open("report.html");
+		new_window.meme = res;
+	});
 }
 
 
@@ -221,7 +225,7 @@ function processHTML(temp, target)
 
 
 
-let report_body = document.getElementById('displayed');
+
 close_button.onclick = function(element) {
   report_body.innerHTML = null;
   close_button.style.cssText = 'display: none;';
