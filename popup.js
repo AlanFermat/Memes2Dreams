@@ -74,7 +74,7 @@
 
 // Logic for adding keywords
 
-var social_issues = ['Climate Change', 'AIDS+', 'Immigration', 'Gun Reform', 'Cancer'];
+var social_issues = ['Climate Change', 'LGBTQ', 'AIDS', 'Immigration', 'Gun Reform', 'Cancer'];
 let num_of_social_issues = 6;
 
 for (var i = 0; i < num_of_social_issues; i++) {
