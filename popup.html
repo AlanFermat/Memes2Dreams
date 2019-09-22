@@ -1,176 +1,152 @@
 <!DOCTYPE html>
   <html lang='en'>
-    <head>
-        <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <!-- <link type="text/css" href="styles.scss" rel="stylesheet"> -->
+        
         <style>
           .container{
-                    position: relative;
-                    height: 600px;
-                    width: 350px;
-                  }
+            position: relative;
+            height: 600px;
+            width: 350px;
+          }
           
-                  .title {
-                    font-family: 'Didact Gothic';font-size: 35px;
-                    position: absolute;
-                    top: -20px;
-                    right: 40px;
-                  }
+          .title {
+            font-family: 'Didact Gothic';font-size: 35px;
+            position: absolute;
+            top: -20px;
+            right: 40px;
+          }
           
-                  .memes {
-                    font-family: 'Didact Gothic';font-size: 20px;
-                    position: absolute;
-                    top: 100px;
-                    left: 20px;
-                  }
+          .memes {
+            font-family: 'Didact Gothic';font-size: 20px;
+            position: absolute;
+            top: 100px;
+            left: 20px;
+          }
           
-                  .issues {
-                    font-family: 'Didact Gothic';font-size: 20px;
-                    position: absolute;
-                    top: 300px;
-                    left: 20px;
-                  }
+          .issues {
+            font-family: 'Didact Gothic';font-size: 20px;
+            position: absolute;
+            top: 300px;
+            left: 20px;
+          }
           
-                  .trackmemebutton {
-                    color: white;
-                    border-radius: 4px;
-                    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                    background: #c19fcc;
-                    padding:10px;
-                    font-size:15px;
-                  }
+          .trackmemebutton {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 150px;
+            background: #5d2d6d;
+            padding:10px;
+            font-size:15px;
+          }
+
+/*          .trackbutton {
+            color: white;
+            position: absolute;
+            top: 150px;
+            left: 105px;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: #5d2d6d;
+            padding:10px;
+            font-size:15px;
+          }*/
           
-                  .issuebutton {
-                    color: white;
-                    border-radius: 4px;
-                    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                    background: #c19fcc;
-                    padding:10px;
-                    font-size:15px;
-                  }
+          .issuebutton {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: #c19fcc;
+            padding:10px;
+            font-size:15px;
+          }
           
-                  .reportbutton {
-                    color: white;
-                    position: absolute;
-                    bottom: 50px;
-                    left: 20px;
-                    border-radius: 4px;
-                    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                    background: #000000;
-                    padding:10px;
-                    font-size:15px;
-                  }
-          
-                  .balloon {
-                    display: inline-block;
-                    width: 215px;
-                    padding: 10px 0 10px 15px;
-                    font-family: "Open Sans", sans;
-                    font-weight: 400;
-                    color: #377D6A;
-                    background: #efefef;
-                    border: 0;
-                    border-radius: 3px;
-                    outline: 0;
-                    text-indent: 60px; 
-                    transition: all .3s ease-in-out;
-          
-                  + label {
-                    display: inline-block;
-                    position: absolute;
-                    top: 8px;
-                    left: 0;
-                    bottom: 8px;
-                    padding: 5px 15px;
-                    color: #032429;
-                    font-size: 11px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    text-shadow: 0 1px 0 rgba(19,74,70,0);
-                    transition: all .3s ease-in-out;
-                    border-radius: 3px;
-                    background: rgba(122,184,147,0);
-              
-                    :after {
-                      position: absolute;
-                      content: "";
-                      width: 0;
-                      height: 0;
-                      top: 100%;
-                      left: 50%;
-                      margin-left: -3px;
-                      border-left: 3px solid transparent;
-                      border-right: 3px solid transparent;
-                      border-top: 3px solid rgba(122,184,147,0);
-                      transition: all .3s ease-in-out;
-                    }
-          
-                    }
-                  }
-                    .balloon:focus,
-                    .balloon:active {
-                      color: rgb(0, 0, 0);
-                      text-indent: 0;
-                      background: #fff;
-                      
-                      &::-webkit-input-placeholder {
-                        color: #aaa;
-                      }
-                    + label {
-                        color: #fff;
-                        text-shadow: 0 1px 0 rgba(19,74,70,.4);
-                        background: rgba(122,184,147,1);
-                        transform: translateY(-40px);
-                        
-                        &:after {
-                          border-top: 4px solid rgba(122,184,147,1);
-                        }
-                      }
-                    }
-          
-                    
-          
-              </style>
-       
-    </head>
+          .reportbutton {
+            color: white;
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: #000000;
+            padding:10px;
+            font-size:15px;
+          }
+            
+          .tags-input {
+            border: 1px;
+            display: inline-block;
+          }
+
+          .tags-input .tag {
+            font-size: 60%;
+            padding: 0.5em 0.75em;
+            margin: 0.3em;
+            display: inline-block;
+            background-color: #ddd;
+            transition: all 0.1s linear;
+            cursor: pointer;
+          }
+
+          .tags-input .tag:hover {
+              background-color: #5d2d6d;
+              color: white;
+          }
+
+          .tags-input .tag .close::after {
+              content: "x";
+              font-weight: bold;
+              display: inline-block;
+              transform: scale(1.4);
+              margin-left: 0.75em;
+          }
+
+          .tags-input .tag .close:hover::after {
+              color: rgb(255, 255, 255);
+          }
+
+          .tags-input .main-input {
+              border: 1;
+              outline: 0;
+              padding: 0.5em;
+          } 
+        </style>    
+  </head>
     <body>
         <div class="container">
-
           <p class="title">Memes To Dreams</p> <!-- Title -->
-
           <div class="memes"> <!-- Meme input -->
-
             <p>Track Memes</p> 
-
-            <p><input class="balloon" id="memeinput" type="text" placeholder="Meme Keyword" /></p>
-
-            <div id="memeoutput"></div>
-
-            <button class="trackmemebutton" id="trackmeme_button">Track Meme</button>
-
+            <p>
+              <div class="tags-input" data-name="tags-input"> 
+              <button class="trackmemebutton" id="thisbutton">Add Meme</button> 
+              </div>
+            </p>
+<!--             <button class="trackbutton" id="tracker">Track Memes</button> -->
           </div>
         
           <div class="issues"> <!-- Issue buttons -->
-
             <p>Social Issue</p> 
-
-          <button class="issuebutton" id="issue1" type="button">Climate Change</button>
-          <button class="issuebutton" id="issue2" type="button">LGBTQ+</button> 
-          <button class="issuebutton" id="issue5" type="button">AIDS</button><br>
-          <button class="issuebutton" id="issue3" type="button">Immigration</button> 
-          <button class="issuebutton" id="issue4" type="button">Gun Reform</button> 
-          <button class="issuebutton" id="issue6" type="button">Cancer</button><br> 
+            <div class="button-1row"><button class="issuebutton" id="issue1">Climate Change</button> 
+              <button class="issuebutton" id="issue2">LGBTQ+</button> 
+              <button class="issuebutton" id="issue5">AIDS</button><br>
+            </div>
+            <div class="button-2row"><button class="issuebutton" id="issue3">Immigration</button> 
+              <button class="issuebutton" id="issue4">Gun Reform</button> 
+              <button class="issuebutton" id="issue6">Cancer</button><br> 
+            </div>
           </div>
-          <div id="storage" style="display:none;"></div>
+
           <button class="reportbutton" id="report_button">Get Report</button> <!-- Get report button -->
-          
+
 
       </div>
-      <div id="displayed">
-        
-      </div>
-      <button id="close_report" style="display: none;">Close</button>
 
-      <script type="text/javascript" src="popup.js"> </script>
-      <script type="text/javascript" src="ajax.js"> </script>
+      <script type="text/javascript" src="popup.js"> 
+      </script>
+
     </body>
   </html>

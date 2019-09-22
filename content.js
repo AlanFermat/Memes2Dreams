@@ -12,7 +12,7 @@ window.onload =	function () {
 
 		var i;
 		for (i = 0; i < x.length; i++) {
-			x[i].style.backgroundColor = "red";
+			// x[i].style.backgroundColor = "red";
 			content.push(x[i].innerHTML);
 			// chrome.runtime.sendMessage({"content": x[i].innerHTML});
 
