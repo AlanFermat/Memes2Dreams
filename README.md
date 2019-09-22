@@ -4,4 +4,4 @@
 
 ## Demo
 
-[![Watch the video](https://raw.githubusercontent.com/AlanFermat/MemesDreams/master/images/screen_shot.png)](https://youtu.be/gr075O1j9I0)
+[![Watch the video](https://github.com/AlanFermat/Memes2Dreams/blob/master/images/screen_shot.png?raw=true)](https://youtu.be/gr075O1j9I0)
