@@ -92,6 +92,7 @@ let num_of_social_issues = 6;
 for (var i = 0; i < num_of_social_issues; i++) {
 	var name = "issue" + (i+1).toString();
 	var issue = document.getElementById(name);
+	console.log(issue);
 	issue.addEventListener('click', function() {
 		if (this.style.type !== 'submit') {
 			this.style.type = 'submit';
@@ -100,7 +101,6 @@ for (var i = 0; i < num_of_social_issues; i++) {
 		} else {
 			this.style.type = 'button';
 			this.style.cssText = "background: white;";
-			// #5d2d6d
 			deleteSocialIssueKeyword(this.innerHTML);
 		}
 		console.log("You clicked:", this.innerHTML);
@@ -156,16 +156,13 @@ function deleteMemeKeyword(keyword) {
 
 
 let report = document.getElementById("report_button");
-let report_body = document.getElementById('displayed');
 report.onclick = function() {
-	// close_button.style.cssText = 'display: inline;';
-	// report_body.load("report.html");
 	chrome.storage.sync.get("meme", function(result) {
 		var res = result.meme;
 		var new_window = window.open("report.html");
 		new_window.meme = res;
 	});
-}
+};
 
 
 
