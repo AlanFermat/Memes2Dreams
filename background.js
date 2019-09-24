@@ -1,6 +1,6 @@
 var rule = {
         conditions: [new chrome.declarativeContent.PageStateMatcher({
-          pageUrl: {hostContains: 'twitter.com'},
+          pageUrl: {hostContains: '.com'},
         })
         ],
             actions: [new chrome.declarativeContent.ShowPageAction()]
@@ -63,25 +63,25 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 
       var c = 0;
       for (var keyword in storageChange.newValue) {
-            console.log(storageChange.newValue[keyword]+ "\n");
+            // console.log(storageChange.newValue[keyword]+ "\n");
             c += storageChange.newValue[keyword];
       }
 
-      console.log(c);
+      // console.log(c);
 
-      if (c === 1) {
+      if (c >= 3 && c <= 10) {
         display(1, c);
-      } else if (c >= 10) {
+      } else if (c >= 20) {
         chrome.storage.sync.get("socialIssue", function(result) {
           var candidates = result.socialIssue;
-          console.log(candidates);
+          // console.log(candidates);
 
         if (candidates.length !== 0) {
           
-          console.log(candidates);
+          // console.log(candidates);
           var social_issue = candidates[Math.floor(Math.random() * candidates.length)];
           retrieveNews(social_issue);
-          console.log(news_to_be_shown);
+          // console.log(news_to_be_shown);
           var image_src = news_to_be_shown[2];
           var head_line = news_to_be_shown[0];
           var href = news_to_be_shown[1];
@@ -89,7 +89,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
           }
         });
         
-      } else if (c >= 5) {
+      } else if (c >= 10) {
         display(2, c);
       }
     }
@@ -109,10 +109,10 @@ chrome.runtime.onMessage.addListener(
     console.log('I received the following DOM content:\n' + request.content);
     var x = request.content;
 
-    console.log(x.length);
+    // console.log(x.length);
 
     chrome.storage.sync.get("meme", function(result) {
-      console.log(result.meme);
+      // console.log(result.meme);
 
       var res = result.meme;
 

@@ -8,7 +8,7 @@
       "persistent": false
     },
     "content_scripts": [{
-      "matches": ["*://*.twitter.com/*"],
+      "matches": ["*://*.com/*"],
       "js": ["content.js"]
     }],
     "permissions": ["declarativeContent", "storage", "activeTab"],

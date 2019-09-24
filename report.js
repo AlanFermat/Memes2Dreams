@@ -5,8 +5,8 @@ console.log(charlist);
 charlist_html = '';
 var ref = window.meme;
 for (var keyword in ref) {
-    console.log(keyword, ref[keyword]);
-    console.log(charlist_html);
+    // console.log(keyword, ref[keyword]);
+    // console.log(charlist_html);
     charlist_html += '<li><span class="char">' + keyword + '</span> <span class="charchance">' + ref[keyword] + '</span></li>';
 }
 

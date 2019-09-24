@@ -10,8 +10,8 @@ head_line.innerHTML = window.head_line;
 
 
 share_toggle.onclick = function (e) {
-	console.log(social_bar);
-	console.log(social_bar.className);
+	// console.log(social_bar);
+	// console.log(social_bar.className);
 	// social_bar.setAttribute("class", "card__social--active");
 	if (social_bar.className ==="card__social") {
 		social_bar.className = "card__social--active";
