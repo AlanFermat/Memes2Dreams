@@ -43,27 +43,27 @@ function retrieveNews(strSocialIssue) {
             return response.json()
         })
         .then(data => {
-            var rand_num = [];
-            var i, j, k;
-            j = 0;
-            while (j < news_per_category) {
-              var num = Math.floor(Math.random() * data.articles.length);
-              if (rand_num.includes(num) == false) {
-                rand_num.push(num);
-                j++;
-              }
-            }
+            var i;
             for(i = 0; i < data.articles.length; i++) {
                newsSubset = [];
                newsSubset.push(data.articles[i].title, 
                 data.articles[i].url, data.articles[i].urlToImage);
                allNews.push(newsSubset)
             }
-        for (k = 0; k < news_per_category;k++) {
-          console.log(rand_num[k]);
-          news_to_be_shown.push(allNews[rand_num[k]]);
-        }
-  })  
+            var j, k;
+            j = 0;
+            var rand_num = [];
+            while (j < news_per_category) {
+              var num = Math.floor(Math.random() * allNews.length);
+              if (rand_num.includes(num) == false) {
+                rand_num.push(num);
+                j++;
+              }
+            }
+            for (k = 0; k < news_per_category;k++) {
+              news_to_be_shown.push(allNews[rand_num[k]]);
+            }
+    })
 }
 
 
