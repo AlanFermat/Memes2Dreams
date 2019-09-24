@@ -2,165 +2,8 @@
   <html lang='en'>
   <head>
     <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
-    <script src="jquery.min.js"></script>
-        
-        <style>
-          .container{
-            position: relative;
-            height: 630px;
-            width: 350px;
-          }
-          
-          .title {
-            font-family: 'Didact Gothic';
-            font-weight: bold;
-            font-size: 30px;
-            position: absolute;
-            top: 60px;
-            right: 60px;
-            color: #5d2d6d;
-          }
-
-          .logo {
-            width: 38%;
-            position: absolute;
-            left: 110px;
-            top: -10px;
-          }
-          
-          .memes {
-            font-family:'Didact Gothic';
-            font-size: 20px;
-            position: absolute;
-            top: 140px;
-            left: 20px;
-          }
-
-          .memetitle {
-            top: 50px;
-            left: 10px;
-            text-decoration: underline;
-          }
-
-          .issuetitle {
-            text-decoration: underline;
-            position: center;
-            left: 50px;
-          }
-          
-          .issues {
-            font-family: 'Didact Gothic';
-            font-size: 20px;
-            position: absolute;
-            top: 340px;
-            left: 20px;
-          }
-          
-          .trackmemebutton {
-            color: white;
-            border-radius: 4px;
-            text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-            box-shadow: 2px 5px 6px #d5d5d5;
-            position: absolute;
-            top: 200px;
-            background: #5d2d6d;
-            padding:10px;
-            font-size:15px;
-          }
-
-          .trackmemebutton:hover {
-            background-color: #000000;
-            color: white;
-            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s linear;
-            cursor: pointer;
-          }
-          
-          .button-2row {
-            position: relative;
-            bottom: -5px;
-          }
-
-
-          .issuebutton {
-            color: #5d2d6d;
-            border-radius: 4px;
-            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-            box-shadow: 2px 5px 6px #d5d5d5;
-            background: #ffffff;
-            padding: 10px;
-            font-size:15px;
-            cursor: pointer;
-          }
-          
-          .reportbutton {
-            color: white;
-            position: absolute;
-            bottom: 70px;
-            left: 20px;
-            border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            box-shadow: 2px 5px 6px #d5d5d5;
-            background: #000000;
-            padding: 10px;
-            font-size:15px;
-          }
-
-          .reportbutton:hover {
-            background-color: #b594bf;
-            color: white;
-            transition: all 0.3s linear;
-            cursor: pointer;
-          }
-            
-          .tags-input {
-            border: 1px;
-            display: inline-block;
-            top: 50px;
-            left: 5px;
-          }
-
-          .tags-input .tag {
-            font-size: 60%;
-            padding: 0.5em 0.75em;
-            margin: 0.3em;
-            display: inline-block;
-            background-color: #ddd;
-            transition: all 0.1s linear;
-            cursor: pointer;
-          }
-
-          .tags-input .tag:hover {
-              background-color: #5d2d6d;
-              color: white;
-          }
-
-          .tags-input .tag .close::after {
-              content: "x";
-              font-weight: bold;
-              display: inline-block;
-              transform: scale(1.4);
-              margin-left: 0.75em;
-          }
-
-          .tags-input .tag .close:hover::after {
-              color: rgb(255, 255, 255);
-          }
-
-          .tags-input .main-input {
-              border: 1;
-              outline: 0;
-              padding: 0.5em;
-          } 
-
-          .copyright {
-            color:darkgray;
-            position: absolute;
-            bottom: 10px;
-            left: 20px;
-          }
-
-        </style>    
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="jquery.min.js"></script>  
   </head>
     <body>
         <div class="container">
@@ -173,7 +16,6 @@
               </div>
             </p>
           </div>
-        
           <div class="issues"> <!-- Issue buttons -->
             <p class="issuetitle">Which Dreams Matter To You?</p> 
             <div class="button-1row"><button class="issuebutton" id="issue1">Climate Change</button> 
@@ -186,15 +28,10 @@
               <button class="issuebutton" id="issue6">Cancer</button><br> 
             </div>
           </div>
-
           <button class="reportbutton" id="report_button">Get Report</button> <!-- Get report button -->
-
           <p class="copyright">Copyright Hack Rice 9, 2019</p>
       </div>
-
       <script type="text/javascript" src="popup.js"> 
-      
       </script>
-
     </body>
   </html>
