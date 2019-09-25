@@ -20,7 +20,7 @@ function initStorage() {
     });
     chrome.storage.sync.set({ "socialIssue" : [] }, function() {
     });
-     console.log('Initializing meme storage');
+    console.log('Initializing meme storage');
 }
 
 chrome.runtime.onInstalled.addListener(function() {

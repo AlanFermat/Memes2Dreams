@@ -1,15 +1,17 @@
 var originalElementList = [];
-chrome.storage.sync.get("meme", function (result) {
-	for (var key in result.meme) {
-		if (result.meme.hasOwnProperty(key)) {
-			originalElementList.push(key);
-		} 
-	}
-});
+var num_of_memes = 5;
+if (localStorage.number !== undefined) {
+	num_of_memes = localStorage.number;
+}
 
+console.log(localStorage);
+if (localStorage.meme !== undefined) {
+	originalElementList = JSON.parse(localStorage.getItem("meme"));
+	console.log(originalElementList);
+}
 
+let tagsList = originalElementList;
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
-	let tagsList = originalElementList;
 	let hiddenInput = document.createElement('input'),
 		mainInput = document.createElement('input'),
 		tags = [];
@@ -28,21 +30,33 @@ chrome.storage.sync.get("meme", function (result) {
 	});
 
 	function addTag() {
-		if (tagsList.length < 5) {
+		if (tagsList.length < num_of_memes) {
 			document.getElementById('warning').innerHTML = "";
-			var tag = create_tag(mainInput.value);
-			tags.push(tag);
-			el.insertBefore(tag.element, hiddenInput);
-			addMemeKeyword(tag.text);
-			addTagHelper(tag.text);	
-			mainInput.value = "";
+			var tag = createTag(mainInput.value);
+			if (checkTagExists(tag, tags) == false) {
+				tags.push(tag);
+				el.insertBefore(tag.element, hiddenInput);
+				addMemeKeyword(tag.text);
+				addTagHelper(tag.text);	
+			}
+			mainInput.value = "";	
 		} else {
-			document.getElementById('warning').innerHTML = "Can only track 5 memes or less."
+			document.getElementById('warning').innerHTML = "Can only track "+ 
+				num_of_memes.toString() +" memes or less."
 		}
-		
 	};
 
-	function create_tag(val) {
+	function checkTagExists(tag, tags) {	
+		for (var i = 0; i < tags.length; i++) {
+			var check_tag = tags[i];
+			if (check_tag.text === tag.text) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function createTag(val) {
 		let tag = {
 			text: val,
 			element: document.createElement('span'),
@@ -141,6 +155,16 @@ function addMemeKeyword(keyword) {
         });
       }
     });
+    if (localStorage.meme === undefined) {
+    	var storage_for_memes = [];
+    	storage_for_memes.push(keyword);
+    	localStorage.setItem("meme", JSON.stringify(storage_for_memes));
+    } else {
+    	var storage_for_memes = JSON.parse(localStorage.getItem("meme"));
+    	storage_for_memes.push(keyword);
+    	localStorage.setItem("meme", JSON.stringify(storage_for_memes));
+    }
+    
 }
 
 function deleteMemeKeyword(keyword) {
