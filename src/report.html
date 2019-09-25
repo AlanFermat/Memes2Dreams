@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Meme Report</title>
     <link rel="stylesheet" href="report.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="chart.js"></script>
 </head>
 <body>
-<div class="word-main">
+<div class="word-main text-center">
     <h1 id="word">Here's your report!</h1>
     <h2><span id="length"></span></h2>
-    <ul id="charlist"></ul>
-</div>
-</div>
-<p class="text-center">Created By <a href="#">Memes2Dreams</a></p>
+     <div class="row">
+     	<div  class="col-sm-4"></div>
+    	<div  class="col-sm-4 justify-content-center">
+      		<canvas id="bar_chart"></canvas>
+    	</div>
+  	</div>
+	<p class="text-center">Created By <a href="#">Memes2Dreams</a></p>
 </div>
 
 </body>

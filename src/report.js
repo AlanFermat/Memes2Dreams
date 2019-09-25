@@ -1,14 +1,35 @@
 // write word data to dom
-var len, charlist_html;
-let charlist = document.getElementById('charlist');
-console.log(charlist);
-charlist_html = '';
+let chart = document.getElementById('bar_chart');
 var ref = window.meme;
-for (var keyword in ref) {
-    // console.log(keyword, ref[keyword]);
-    // console.log(charlist_html);
-    charlist_html += '<li><span class="char">' + keyword + '</span> <span class="charchance">' + ref[keyword] + '</span></li>';
+
+
+var options = {
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				}
+			}]
+		}
+	};
+
+var data = {
+		labels: [],
+		datasets: [{
+			label: '# of Memes',
+			data: [],
+			backgroundColor: '#800080',
+			borderWidth: 1
+		}]};
+
+for (var key in ref) {
+	data.labels.push(key);
+	data.datasets[0].data.push(ref[key]);
 }
 
-charlist.innerHTML = charlist_html;
-
+var report_chart = new Chart(chart, {
+	type: 'bar',
+	data: data,
+	options: options
+	
+});
