@@ -10,6 +10,9 @@ if (localStorage.meme !== undefined) {
 }
 
 let tagsList = originalElementList;
+let container = document.getElementById("container"),
+	issues_session = document.getElementById("issues");
+
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
 	let hiddenInput = document.createElement('input'),
 		mainInput = document.createElement('input'),
@@ -29,6 +32,9 @@ let tagsList = originalElementList;
 		tags.push(tag);	
 		hiddenInput.value = tagsList.join(',');
 		el.insertBefore(tag.element, hiddenInput);
+		if (i % 4 === 0) {
+			adjustMarginForMemes();
+		}
 	}
 
 	// Add tag on click
@@ -41,6 +47,9 @@ let tagsList = originalElementList;
 	// Add tag to the tag list function
 	function addTag() {
 		if (tagsList.length < num_of_memes) {
+			if (tagsList.length % 4 === 0) {
+				adjustMarginForMemes();
+			}
 			document.getElementById('warning').innerHTML = "";
 			var tag = createTag(mainInput.value);
 			if (checkTagExists(tag, tags) == false) {
@@ -109,6 +118,19 @@ let tagsList = originalElementList;
 		hiddenInput.value = tagsList.join(',');
 	}
 })
+
+
+// Adjust the margin and passing when adding more memes 
+function adjustMarginForMemes() {
+	console.log("adjust");
+	
+	var container_height = container.offsetHeight;
+	var issues_top_margin = issues_session.style.top;
+	console.log(container_height);
+	console.log(issues_top_margin);
+	container.style.cssText = "height: " + container_height + "px;";
+	issues_session.style.cssText = "top: " + issues_top_margin + "px;";
+}
 
 
 
@@ -199,9 +221,7 @@ function deleteMemeKeyword(keyword) {
 }
 
 
-
-let report = document.getElementById("report_button");
-report.onclick = function() {
+report_button.onclick = function() {
 	chrome.storage.sync.get("meme", function(result) {
 		var res = result.meme;
 		var new_window = window.open("report.html");
