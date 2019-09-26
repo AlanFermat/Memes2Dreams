@@ -21,6 +21,7 @@ function initStorage() {
     chrome.storage.sync.set({ "socialIssue" : [] }, function() {
     });
     localStorage.meme = "[]";
+    localStorage.number = 5;
     console.log('Initializing meme storage');
 }
 

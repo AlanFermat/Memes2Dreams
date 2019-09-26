@@ -32,7 +32,7 @@ let container = document.getElementById("container"),
 		tags.push(tag);	
 		hiddenInput.value = tagsList.join(',');
 		el.insertBefore(tag.element, hiddenInput);
-		if (i % 4 === 0) {
+		if (i % 5 === 0) {
 			adjustMarginForMemes();
 		}
 	}
@@ -47,7 +47,7 @@ let container = document.getElementById("container"),
 	// Add tag to the tag list function
 	function addTag() {
 		if (tagsList.length < num_of_memes) {
-			if (tagsList.length % 4 === 0) {
+			if (tagsList.length % 5 === 0) {
 				adjustMarginForMemes();
 			}
 			document.getElementById('warning').innerHTML = "";
@@ -124,12 +124,13 @@ let container = document.getElementById("container"),
 function adjustMarginForMemes() {
 	console.log("adjust");
 	
-	var container_height = container.offsetHeight;
-	var issues_top_margin = issues_session.style.top;
+	var container_height = container.offsetHeight + 35;
+	var issues_top_margin = issues_session.offsetTop + 35;
 	console.log(container_height);
 	console.log(issues_top_margin);
-	container.style.cssText = "height: " + container_height + "px;";
-	issues_session.style.cssText = "top: " + issues_top_margin + "px;";
+	container.style.height = container_height + "px";
+	console.log(container.style.height);
+	issues_session.style.top = issues_top_margin + "px";
 }
 
 
