@@ -7,7 +7,7 @@ function display(arg, count, news_to_be_shown = undefined) {
 			" instances of memes!\n"+
 			"Do you want to share some meaningful posts for redemption?");
 	  	if (r == true) {
-		    var news_window = window.open("src/carousel.html");
+		    var news_window = window.open("src/post_social_issue.html");
 		    if (news_to_be_shown !== undefined) {
 		    	news_window.news_to_be_shown = news_to_be_shown;
 		    } else {

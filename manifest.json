@@ -26,6 +26,5 @@
       "32": "images/M2D32.png",
       "48": "images/M2D48.png",
       "128": "images/M2D128.png"
-    },
-    "options_page": "src/option.html"
+    }
   }

@@ -1,9 +1,5 @@
 var originalMemeList = [];
-var num_of_memes = 5;
 var originalSocialIssueList = [];
-if (localStorage.number !== undefined) {
-	num_of_memes = localStorage.number;
-}
 
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
@@ -51,23 +47,18 @@ let container = document.getElementById("container"),
 
 	// Add tag to the tag list function
 	function addTag() {
-		if (tagsList.length < num_of_memes) {
-			if (tagsList.length % 5 === 0) {
-				adjustMarginForMemes();
-			}
-			document.getElementById('warning').innerHTML = "";
-			var tag = createTag(mainInput.value);
-			if (checkTagExists(tag, tags) == false) {
-				tags.push(tag);
-				el.insertBefore(tag.element, hiddenInput);
-				addMemeKeyword(tag.text);
-				addTagHelper(tag.text);	
-			}
-			mainInput.value = "";	
-		} else {
-			document.getElementById('warning').innerHTML = "Can only track "+ 
-				num_of_memes.toString() +" memes or less."
+		if (tagsList.length % 5 === 0) {
+			adjustMarginForMemes();
 		}
+		document.getElementById('warning').innerHTML = "";
+		var tag = createTag(mainInput.value);
+		if (checkTagExists(tag, tags) == false) {
+			tags.push(tag);
+			el.insertBefore(tag.element, hiddenInput);
+			addMemeKeyword(tag.text);
+			addTagHelper(tag.text);	
+		}
+		mainInput.value = "";	
 	};
 
 	// If the tag has existed in the tag list
