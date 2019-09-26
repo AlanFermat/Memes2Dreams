@@ -22,6 +22,7 @@ function initStorage() {
     });
     localStorage.meme = "[]";
     localStorage.number = 5;
+    localStorage.socialIssue = "[]";
     console.log('Initializing meme storage');
 }
 

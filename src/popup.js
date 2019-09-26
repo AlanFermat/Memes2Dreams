@@ -1,15 +1,20 @@
-var originalElementList = [];
+var originalMemeList = [];
 var num_of_memes = 5;
+var originalSocialIssueList = [];
 if (localStorage.number !== undefined) {
 	num_of_memes = localStorage.number;
 }
 
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
-	originalElementList = JSON.parse(localStorage.getItem("meme"));
+	originalMemeList = JSON.parse(localStorage.getItem("meme"));
 }
 
-let tagsList = originalElementList;
+if (localStorage.socialIssue !== undefined) {
+	originalSocialIssueList = JSON.parse(localStorage.getItem("socialIssue"));
+}
+
+let tagsList = originalMemeList;
 let container = document.getElementById("container"),
 	issues_session = document.getElementById("issues");
 
@@ -136,6 +141,22 @@ function adjustMarginForMemes() {
 var social_issues = ['Climate', 'LGBT', 'AIDS', 'Immigration', 'Gun Reform', 'Cancer'];
 let num_of_social_issues = 6;
 
+
+// recall the social issues that already put in
+function init_social_issues() {
+	for (var i = 0; i < num_of_social_issues; i++) {
+		var name = "issue" + (i+1).toString();
+		var issue = document.getElementById(name);
+		if (originalSocialIssueList.includes(issue.innerHTML)) {
+			issue.style.type = 'submit';
+			issue.style.cssText = "background: #5d2d6d; color: white";
+		}
+	}
+}
+
+
+init_social_issues();
+
 // create button logic for each social issue
 for (var i = 0; i < num_of_social_issues; i++) {
 	var name = "issue" + (i+1).toString();
@@ -164,6 +185,11 @@ function addSocialIssueKeyword(keyword) {
         	console.log("updating");
         });
 	});
+	var storage_social_issue = JSON.parse(localStorage.getItem("socialIssue"));
+	storage_social_issue.push(keyword);
+	localStorage.setItem("socialIssue", JSON.stringify(storage_social_issue));
+	console.log("add socialIssue");
+	console.log(localStorage);
 }
 
 // Delete the social issue keyword
@@ -177,6 +203,14 @@ function deleteSocialIssueKeyword(keyword) {
         	console.log("updating");
         });
     });
+    var storage_social_issue = JSON.parse(localStorage.getItem("socialIssue"));
+    var idx = storage_social_issue.indexOf(keyword);
+    if (idx !== -1) {
+    	storage_social_issue.splice(idx, 1);
+    }
+    localStorage.setItem("socialIssue", JSON.stringify(storage_social_issue));
+    console.log("delete socialIssue");
+    console.log(localStorage);
 }
 
 
@@ -190,15 +224,11 @@ function addMemeKeyword(keyword) {
         });
       }
     });
-    if (localStorage.meme === undefined) {
-    	var storage_for_memes = [];
-    	storage_for_memes.push(keyword);
-    	localStorage.setItem("meme", JSON.stringify(storage_for_memes));
-    } else {
-    	var storage_for_memes = JSON.parse(localStorage.getItem("meme"));
-    	storage_for_memes.push(keyword);
-    	localStorage.setItem("meme", JSON.stringify(storage_for_memes));
-    }
+	var storage_meme = JSON.parse(localStorage.getItem("meme"));
+	storage_meme.push(keyword);
+	localStorage.setItem("meme", JSON.stringify(storage_meme));
+	console.log("add meme");
+	console.log(localStorage);
     
 }
 
@@ -209,12 +239,14 @@ function deleteMemeKeyword(keyword) {
           delete result.meme[keyword];
       }
     });
-    var storage_for_memes = [];
-    storage_for_memes = JSON.parse(localStorage.getItem("meme"));
-    var idx = storage_for_memes.indexOf(keyword);
+    var storage_meme = JSON.parse(localStorage.getItem("meme"));
+    var idx = storage_meme.indexOf(keyword);
     if (idx !== -1) {
-    	storage_for_memes.splice(idx, 1);
+    	storage_meme.splice(idx, 1);
     }
+    localStorage.setItem("meme", JSON.stringify(storage_meme));
+    console.log("delete meme");
+    console.log(localStorage);
 }
 
 
