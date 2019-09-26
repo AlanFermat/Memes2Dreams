@@ -119,8 +119,8 @@ let container = document.getElementById("container"),
 // Adjust the margin and passing when adding more memes 
 function adjustMarginForMemes() {
 	console.log("adjust margin");
-	var container_height = container.offsetHeight + 35;
-	var issues_top_margin = issues_session.offsetTop + 35;
+	var container_height = container.offsetHeight + 100;
+	var issues_top_margin = issues_session.offsetTop + 100;
 	container.style.height = container_height + "px";
 	issues_session.style.top = issues_top_margin + "px";
 }
