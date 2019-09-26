@@ -22,6 +22,7 @@ function initStorage() {
     });
     localStorage.meme = "[]";
     localStorage.socialIssue = "[]";
+    localStorage.alertCount = "0";
     console.log('Initializing meme storage');
 }
 
@@ -77,22 +78,27 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       for (var keyword in storageChange.newValue) {
             c += storageChange.newValue[keyword];
       }
-      if (c >= 3 && c < 10) {
-        display(1, c);
-      } else if (c >= 10) {
-        chrome.storage.sync.get("socialIssue", function(result) {
-          var candidates = result.socialIssue;
-          // console.log(candidates);
-        if (candidates.length !== 0) {      
-            for (var social_issue in candidates) {
-              retrieveNews(social_issue);
-            }
-            display(2, c, news_to_be_shown = news_to_be_shown);
-        }
-        else {
+      var count = JSON.parse(localStorage.getItem("alertCount"));
+      if (count < 3 || Math.exp(1.0 - count / 3.0) > Math.random()) {
+        console.log("here");
+        console.log(count);
+        if (c >= 3 && c < 10) {
           display(1, c);
+        } else if (c >= 10) {
+          chrome.storage.sync.get("socialIssue", function(result) {
+            var candidates = result.socialIssue;
+            // console.log(candidates);
+            if (candidates.length !== 0) {      
+                for (var social_issue in candidates) {
+                  retrieveNews(social_issue);
+                }
+                display(2, c, news_to_be_shown = news_to_be_shown);
+            }
+            else {
+              display(1, c);
+            }
+          });
         }
-        });
       }
     }
     console.log('Storage key "%s" in namespace "%s" changed. ' +
