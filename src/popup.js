@@ -7,7 +7,6 @@ if (localStorage.number !== undefined) {
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
 	originalElementList = JSON.parse(localStorage.getItem("meme"));
-	console.log(originalElementList);
 }
 
 let tagsList = originalElementList;
@@ -21,16 +20,15 @@ let tagsList = originalElementList;
 	mainInput.setAttribute('placeholder', 'Meme Keyword');
 	mainInput.setAttribute('style', 'padding: 10px; font-size: 15px');
 	mainInput.classList.add('main-input');
+	el.appendChild(mainInput);
+	el.appendChild(hiddenInput);
 
 	// Load the original tags
 	for (var i = 0; i < tagsList.length; i++) {
 		var tag = createTag(tagsList[i]);
-		tags.push(tag);
-		
-		console.log(el);
-		console.log(tag.element);
-		console.log(hiddenInput);
+		tags.push(tag);	
 		hiddenInput.value = tagsList.join(',');
+		el.insertBefore(tag.element, hiddenInput);
 	}
 
 	// Add tag on click
@@ -40,8 +38,7 @@ let tagsList = originalElementList;
 		}
 	});
 
-
-
+	// Add tag to the tag list function
 	function addTag() {
 		if (tagsList.length < num_of_memes) {
 			document.getElementById('warning').innerHTML = "";
@@ -59,6 +56,7 @@ let tagsList = originalElementList;
 		}
 	};
 
+	// If the tag has existed in the tag list
 	function checkTagExists(tag, tags) {	
 		for (var i = 0; i < tags.length; i++) {
 			var check_tag = tags[i];
@@ -69,6 +67,7 @@ let tagsList = originalElementList;
 		return false;
 	}
 
+	// Create a new span element out of the tag
 	function createTag(val) {
 		let tag = {
 			text: val,
@@ -86,9 +85,7 @@ let tagsList = originalElementList;
 		return tag;
 	}
 
-	el.appendChild(mainInput);
-	el.appendChild(hiddenInput);
-
+	// Remove the tag
 	function removeTag (index) {
 		let tag = tags[index];
 		tags.splice(index, 1);
@@ -98,15 +95,17 @@ let tagsList = originalElementList;
 	}
 
 
-	function removeTagHelper(inputtag) {
-		var idx = tagsList.indexOf(inputtag);
+	// Remove it from the tagsList
+	function removeTagHelper(inputTag) {
+		var idx = tagsList.indexOf(inputTag);
 		tagsList.splice(idx, 1);
 	}
 
 
-	function addTagHelper (inputtag) { 
+	// Add the tag to the tagsList
+	function addTagHelper (inputTag) { 
 		// Variable 'tagsList' contains all current tags
-		tagsList.push(inputtag);
+		tagsList.push(inputTag);
 		hiddenInput.value = tagsList.join(',');
 	}
 })
@@ -118,6 +117,7 @@ let tagsList = originalElementList;
 var social_issues = ['Climate', 'LGBT', 'AIDS', 'Immigration', 'Gun Reform', 'Cancer'];
 let num_of_social_issues = 6;
 
+// create button logic for each social issue
 for (var i = 0; i < num_of_social_issues; i++) {
 	var name = "issue" + (i+1).toString();
 	var issue = document.getElementById(name);
@@ -135,6 +135,8 @@ for (var i = 0; i < num_of_social_issues; i++) {
 	});
 }
 
+
+// Add the social keyword
 function addSocialIssueKeyword(keyword) {
 	chrome.storage.sync.get("socialIssue", function(result) {
 		result.socialIssue.push(keyword);
@@ -145,7 +147,7 @@ function addSocialIssueKeyword(keyword) {
 	});
 }
 
-
+// Delete the social issue keyword
 function deleteSocialIssueKeyword(keyword) {
 	chrome.storage.sync.get("socialIssue", function(result) {
 		var idx = result.socialIssue.indexOf(keyword);
@@ -159,6 +161,7 @@ function deleteSocialIssueKeyword(keyword) {
 }
 
 
+// Add the meme keyword
 function addMemeKeyword(keyword) {
     chrome.storage.sync.get("meme", function(result) {
       if (result.meme[keyword] === undefined) {
@@ -180,6 +183,7 @@ function addMemeKeyword(keyword) {
     
 }
 
+// Delete the meme keyword
 function deleteMemeKeyword(keyword) {
     chrome.storage.sync.get("meme", function(result) {
       if (result.meme[keyword] !== undefined) {
