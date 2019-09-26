@@ -22,12 +22,25 @@ let tagsList = originalElementList;
 	mainInput.setAttribute('style', 'padding: 10px; font-size: 15px');
 	mainInput.classList.add('main-input');
 
+	// Load the original tags
+	for (var i = 0; i < tagsList.length; i++) {
+		var tag = createTag(tagsList[i]);
+		tags.push(tag);
+		
+		console.log(el);
+		console.log(tag.element);
+		console.log(hiddenInput);
+		hiddenInput.value = tagsList.join(',');
+	}
+
 	// Add tag on click
 	mainInput.addEventListener("keydown", function (arg) {
 		if (arg.keyCode === 13) {
 			addTag();
 		}
 	});
+
+
 
 	function addTag() {
 		if (tagsList.length < num_of_memes) {
@@ -173,6 +186,12 @@ function deleteMemeKeyword(keyword) {
           delete result.meme[keyword];
       }
     });
+    var storage_for_memes = [];
+    storage_for_memes = JSON.parse(localStorage.getItem("meme"));
+    var idx = storage_for_memes.indexOf(keyword);
+    if (idx !== -1) {
+    	storage_for_memes.splice(idx, 1);
+    }
 }
 
 
