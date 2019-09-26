@@ -33,7 +33,7 @@ let container = document.getElementById("container"),
 		tags.push(tag);	
 		hiddenInput.value = tagsList.join(',');
 		el.insertBefore(tag.element, hiddenInput);
-		if (i % 5 === 0) {
+		if (i > 0 && i % 5 === 0) {
 			adjustMarginForMemes();
 		}
 	}
@@ -47,9 +47,6 @@ let container = document.getElementById("container"),
 
 	// Add tag to the tag list function
 	function addTag() {
-		if (tagsList.length % 5 === 0) {
-			adjustMarginForMemes();
-		}
 		document.getElementById('warning').innerHTML = "";
 		var tag = createTag(mainInput.value);
 		if (checkTagExists(tag, tags) == false) {
@@ -57,6 +54,9 @@ let container = document.getElementById("container"),
 			el.insertBefore(tag.element, hiddenInput);
 			addMemeKeyword(tag.text);
 			addTagHelper(tag.text);	
+		}
+		if (tagsList.length % 5 === 0) {
+			adjustMarginForMemes();
 		}
 		mainInput.value = "";	
 	};

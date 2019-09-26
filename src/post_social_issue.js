@@ -1,5 +1,11 @@
 var i;
 var num_items = 5;
+time_els = document.getElementsByClassName('time');
+for (var j = 0; j < time_els.length ; j ++) {
+	time_els[j].innerHTML = new Date().toJSON().slice(0, 10);
+}
+
+
 for (i = 1; i <= num_items; i++) {
 	let image = document.getElementById('post_image' + i.toString());
 	let head_line = document.getElementById('head_line'+ i.toString());
