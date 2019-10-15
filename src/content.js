@@ -17,7 +17,7 @@ window.onload =	function () {
 			// chrome.runtime.sendMessage({"content": x[i].innerHTML});
 
 		}
-		// console.log(content);
+		console.log(content);
 		chrome.runtime.sendMessage({"content": content});
         // chrome.runtime.sendMessage({"content": document.getElementsByTagName("P")[0].innerHTML});
 

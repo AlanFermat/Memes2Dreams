@@ -1,24 +1,26 @@
 .container{
   position: relative;
   height: 630px;
-  width: 350px;
+  width: 400px;
 }
 
 .title {
   font-family: 'Didact Gothic';
   font-weight: bold;
   font-size: 30px;
-  position: absolute;
-  top: 60px;
-  right: 60px;
+  text-align: center;
+  position: relative;
+  top: -90px;
   color: #5d2d6d;
 }
 
 .logo {
   width: 38%;
-  position: absolute;
-  left: 110px;
-  top: -10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -20px;
 }
 
 .memes {
@@ -74,7 +76,6 @@
   bottom: -5px;
 }
 
-
 .issuebutton {
   color: #5d2d6d;
   border-radius: 4px;
@@ -86,7 +87,7 @@
   cursor: pointer;
 }
 
-.reportbutton {
+.refreshbutton {
   color: white;
   position: absolute;
   bottom: 70px;
@@ -95,6 +96,26 @@
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 5px 6px #d5d5d5;
   background: #000000;
+  padding: 10px;
+  font-size:15px;
+}
+
+.refreshbutton:hover {
+  background-color: #b594bf;
+  color: white;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.reportbutton {
+  color: #5d2d6d;
+  position: absolute;
+  bottom: 70px;
+  left: 160px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 5px 6px #d5d5d5;
+  background: #ffffff;
   padding: 10px;
   font-size:15px;
 }

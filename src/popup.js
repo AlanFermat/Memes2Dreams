@@ -1,14 +1,6 @@
 var originalMemeList = [];
 var originalSocialIssueList = [];
 
-var social_issues = JSON.parse(localStorage.getItem("newsList"));
-
-for (var i = 1; i < 7; i++) {
-	let issue = document.getElementById("issue" + i.toString());
-	issue.innerHTML = social_issues[i-1];
-}
-
-
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
 	originalMemeList = JSON.parse(localStorage.getItem("meme"));
@@ -127,8 +119,8 @@ let container = document.getElementById("container"),
 // Adjust the margin and passing when adding more memes 
 function adjustMarginForMemes() {
 	console.log("adjust margin");
-	var container_height = container.offsetHeight + 100;
-	var issues_top_margin = issues_session.offsetTop + 100;
+	var container_height = container.offsetHeight + 50;
+	var issues_top_margin = issues_session.offsetTop + 50;
 	container.style.height = container_height + "px";
 	issues_session.style.top = issues_top_margin + "px";
 }
@@ -137,7 +129,7 @@ function adjustMarginForMemes() {
 
 // Logic for adding social issues keywords
 
-
+var social_issues = ['Climate', 'LGBT', 'AIDS Awareness', 'Immigration', 'Gun Reform', 'Education'];
 let num_of_social_issues = 6;
 
 
@@ -257,3 +249,11 @@ report_button.onclick = function() {
 	});
 };
 
+
+refresh_button.onclick = function() {
+	chrome.tabs.getSelected(null, function(tab) {
+		var code = 'window.location.reload();';
+		chrome.tabs.executeScript(tab.id, {code: code});
+	  });
+	window.close();
+};

@@ -1,6 +1,60 @@
+.container {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+  position: relative;
+  top: -10px;
+}
+
+a {
+  text-decoration: none;
+  color: #5d2d6d;
+}
+  a:hover {
+    color: rgb(0, 0, 0);
+  }
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  position: relative;
+  top: 50px;
+}
+
 #bar_chart{
-  max-width: 800px;
-  max-height: 800px;
-  min-height: 200px;
-  min-width: 200px;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+  top: 20px;
+}
+
+.title {
+  font-family: 'Didact Gothic';
+  margin-bottom: 1.6rem;
+  font-size: 30px;
+  color: #5d2d6d;
+  text-align: center;
+  top: 20px;
+  position: relative;
+}
+
+.subtitle {
+  font-family: 'Didact Gothic';
+  line-height: 1.2;
+  margin-bottom: 1.6rem;
+  font-size: 20px;
+  text-align: center;
+  top: 10px;
+  position: relative;
+}
+
+.info {
+  color:darkgray;
+  text-align: center;
+  position: relative;
+  top: 20px;
 }
