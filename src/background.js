@@ -20,9 +20,16 @@ function initStorage() {
     });
     chrome.storage.sync.set({ "socialIssue" : [] }, function() {
     });
+
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+    localStorage.date = "2019-10-14";
     localStorage.meme = "[]";
     localStorage.socialIssue = "[]";
     localStorage.alertCount = "0";
+
+    console.log("date is", localStorage.date);
     console.log('Initializing meme storage');
 }
 
@@ -116,7 +123,23 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     var x = request.content;
     chrome.storage.sync.get("meme", function(result) {
-      var res = result.meme;
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+        var res = result.meme;
+
+        if (date !== localStorage.getItem("date")) {
+            localStorage.setItem("date", date);
+            console.log(localStorage.date);
+            // reset all keywords in res
+            for (var key in res) {
+                if (res.hasOwnProperty(key)) {
+                    res[key] = 0;
+                }
+            }
+
+        }
+
       for (i = 0; i < x.length; i++) {
         var h = x[i];
         for (var keyword in res) {
@@ -125,6 +148,7 @@ chrome.runtime.onMessage.addListener(
           }
         }
       }
+
       chrome.storage.sync.set({"meme": res}, function(){
           console.log("updated meme counts");
         });
