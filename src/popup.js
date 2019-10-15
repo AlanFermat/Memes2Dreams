@@ -1,6 +1,11 @@
 var originalMemeList = [];
 var originalSocialIssueList = [];
+var social_issues = JSON.parse(localStorage.getItem("newsList"));
 
+for (var i = 1; i < 7; i++) {
+	let issue = document.getElementById("issue" + i.toString());
+	issue.innerHTML = social_issues[i-1];
+}
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
 	originalMemeList = JSON.parse(localStorage.getItem("meme"));

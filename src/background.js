@@ -8,6 +8,12 @@ var rule = {
 var apiKey = "b8b1367fefdb4995a117ca642f6a87aa";
 var news_to_be_shown = [];
 var news_per_category = 5;
+var social_issue_candidates = ["Racism", "Gender identity",
+    "Religion","Drugs", "Alcohol", "Abuse", "Government",
+    "Cyber security", "Social media","Education", "Disparity",
+    "Protests", "LGBT", "Gun reform", "Cancer", "AIDS",
+    "Climate change", "Immigration","Poverty", "Earthquakes",
+    "Hurricane", "Liberty", "Internet", "Gender"];
 
 function initStorage() {
     chrome.storage.sync.clear(function() {
@@ -20,10 +26,25 @@ function initStorage() {
     });
     chrome.storage.sync.set({ "socialIssue" : [] }, function() {
     });
+
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    localStorage.date = date;
     localStorage.meme = "[]";
     localStorage.socialIssue = "[]";
     localStorage.alertCount = "0";
     console.log('Initializing meme storage');
+    var social_issues = [];
+    var i = 1;
+    while (i < 7) {
+        var idx = Math.floor(Math.random() * social_issue_candidates.length);
+        if (!social_issues.includes(social_issue_candidates[idx])) {
+            social_issues.push(social_issue_candidates[idx]);
+            i += 1;
+        }
+    }
+    localStorage.newsList = JSON.stringify(social_issues);
+    console.log("date is", localStorage.date);
 }
 
 chrome.runtime.onInstalled.addListener(function() {
@@ -79,7 +100,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
             c += storageChange.newValue[keyword];
       }
       var count = JSON.parse(localStorage.getItem("alertCount"));
-      if (count < 3 || Math.exp(1.0 - count / 3.0) > Math.random()) {
+      if (count < 3 || Math.exp(1.0 - count / 2.0) > Math.random()) {
         console.log("here");
         console.log(count);
         if (c >= 3 && c < 10) {
@@ -116,7 +137,22 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     var x = request.content;
     chrome.storage.sync.get("meme", function(result) {
-      var res = result.meme;
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+        var res = result.meme;
+
+        if (date !== localStorage.getItem("date")) {
+            localStorage.setItem("date", date);
+            console.log(localStorage.date);
+            // reset all keywords in res
+            for (var key in res) {
+                if (res.hasOwnProperty(key)) {
+                    res[key] = 0;
+                }
+            }
+
+        }
       for (i = 0; i < x.length; i++) {
         var h = x[i];
         for (var keyword in res) {
