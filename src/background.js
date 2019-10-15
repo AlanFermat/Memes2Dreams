@@ -5,9 +5,16 @@ var rule = {
         ],
             actions: [new chrome.declarativeContent.ShowPageAction()]
       };
-var apiKey = "b8b1367fefdb4995a117ca642f6a87aa";
+var apiKey = "9824011a36ca45288a7b48e3a49522f7";
 var news_to_be_shown = [];
 var news_per_category = 5;
+var social_issue_candidates = ["Racism", "Gender identity",
+"Religion","Drugs", "Alcohol", "Abuse", "Government",
+"Cyber security", "Social media","Education", "Disparity", 
+"Protests", "LGBT", "Gun reform", "Cancer", "AIDS",
+"Climate change", "Immigration","Poverty", "Earthquakes",
+"Hurricane", "Liberty", "Internet", "Gender"];
+
 
 function initStorage() {
     chrome.storage.sync.clear(function() {
@@ -23,6 +30,16 @@ function initStorage() {
     localStorage.meme = "[]";
     localStorage.socialIssue = "[]";
     localStorage.alertCount = "0";
+    var social_issues = [];
+    var i = 1;
+    while (i < 7) {
+      var idx = Math.floor(Math.random() * social_issue_candidates.length);
+      if (!social_issues.includes(social_issue_candidates[idx])) {
+        social_issues.push(social_issue_candidates[idx]);
+        i += 1;
+      }
+    }
+    localStorage.newsList = JSON.stringify(social_issues);
     console.log('Initializing meme storage');
 }
 
@@ -79,7 +96,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
             c += storageChange.newValue[keyword];
       }
       var count = JSON.parse(localStorage.getItem("alertCount"));
-      if (count < 3 || Math.exp(1.0 - count / 3.0) > Math.random()) {
+      if (count < 3 || Math.exp(1.0 - count / 2.0) > Math.random()) {
         console.log("here");
         console.log(count);
         if (c >= 3 && c < 10) {

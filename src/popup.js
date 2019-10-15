@@ -1,6 +1,14 @@
 var originalMemeList = [];
 var originalSocialIssueList = [];
 
+var social_issues = JSON.parse(localStorage.getItem("newsList"));
+
+for (var i = 1; i < 7; i++) {
+	let issue = document.getElementById("issue" + i.toString());
+	issue.innerHTML = social_issues[i-1];
+}
+
+
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
 	originalMemeList = JSON.parse(localStorage.getItem("meme"));
@@ -129,7 +137,7 @@ function adjustMarginForMemes() {
 
 // Logic for adding social issues keywords
 
-var social_issues = ['Climate', 'LGBT', 'AIDS', 'Immigration', 'Gun Reform', 'Cancer'];
+
 let num_of_social_issues = 6;
 
 
