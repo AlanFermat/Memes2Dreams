@@ -8,7 +8,7 @@ var rule = {
 var apiKey = "9824011a36ca45288a7b48e3a49522f7";
 var news_to_be_shown = [];
 var news_per_category = 5;
-var social_issue_candidates = ["Racism", "Gender identity",
+var social_issue_candidates = ["Racism",
 "Religion","Drugs", "Alcohol", "Abuse", "Government",
 "Cyber security", "Social media","Education", "Disparity", 
 "Protests", "LGBT", "Gun reform", "Cancer", "AIDS",

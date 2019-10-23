@@ -2,6 +2,7 @@ var originalMemeList = [];
 var originalSocialIssueList = [];
 
 var social_issues = JSON.parse(localStorage.getItem("newsList"));
+var remove_count = 0;
 
 for (var i = 1; i < 7; i++) {
 	let issue = document.getElementById("issue" + i.toString());
@@ -42,7 +43,7 @@ let container = document.getElementById("container"),
 		hiddenInput.value = tagsList.join(',');
 		el.insertBefore(tag.element, hiddenInput);
 		if (i > 0 && i % 5 === 0) {
-			adjustMarginForMemes();
+			adjustMarginForMemes(1);
 		}
 	}
 
@@ -64,7 +65,7 @@ let container = document.getElementById("container"),
 			addTagHelper(tag.text);	
 		}
 		if (tagsList.length % 5 === 0) {
-			adjustMarginForMemes();
+			adjustMarginForMemes(1);
 		}
 		mainInput.value = "";	
 	};
@@ -105,6 +106,10 @@ let container = document.getElementById("container"),
 		el.removeChild(tag.element);
 		deleteMemeKeyword(tag.text);
 		removeTagHelper(tag.text);
+		remove_count += 1;
+		if (remove_count % 5 === 0) {
+			adjustMarginForMemes(-1);
+		}
 	}
 
 
@@ -125,10 +130,10 @@ let container = document.getElementById("container"),
 
 
 // Adjust the margin and passing when adding more memes 
-function adjustMarginForMemes() {
+function adjustMarginForMemes(num) {
 	console.log("adjust margin");
-	var container_height = container.offsetHeight + 100;
-	var issues_top_margin = issues_session.offsetTop + 100;
+	var container_height = container.offsetHeight + 100 * num;
+	var issues_top_margin = issues_session.offsetTop + 100 * num;
 	container.style.height = container_height + "px";
 	issues_session.style.top = issues_top_margin + "px";
 }
