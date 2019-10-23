@@ -236,18 +236,18 @@ h3 {
 .twitter {
   background-color: #00abe3; 
 }
-.instagram {
+.linkedin {
   background-color: #00abe3; 
 }
 
 .facebook,
 .twitter,
-.instagram {
+.linkedin {
   color: #fff;
 }
 
   .facebook:hover,
   .twitter:hover,
-  .instagram:hover {
+  .linkedin:hover {
     color: #eee;
   }
