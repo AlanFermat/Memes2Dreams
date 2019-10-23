@@ -18,7 +18,7 @@ var data = {
 		datasets: [{
 			label: '# of Memes',
 			data: [],
-			backgroundColor: '#800080',
+			backgroundColor: '#b594bf',
 			borderWidth: 1
 		}]};
 

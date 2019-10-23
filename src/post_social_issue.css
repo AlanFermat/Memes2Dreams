@@ -18,6 +18,7 @@
 html {
   font-size: 62.5%;
 }
+
 body {
   background-color: #eee;
   font-family: Roboto;
@@ -27,17 +28,45 @@ body {
   color: #666;
 }
 
+.container {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 60px;
+  position: relative;
+  top: -20px;
+}
+
 a {
   text-decoration: none;
-  color: #3498db;
+  color: #5d2d6d;
 }
   a:hover {
-    color: #2980b9;
+    color: rgb(0, 0, 0);
   }
 
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  position: relative;
+  top: 50px;
+}
+
 h2 {
+  font-family: 'Didact Gothic';
+  margin-bottom: 1.6rem;
+  font-size: 30px;
+  color: #5d2d6d;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Didact Gothic';
   line-height: 1.2;
   margin-bottom: 1.6rem;
+  font-size: 20px;
+  text-align: center;
 }
 
 .wrapper {
@@ -55,7 +84,9 @@ h2 {
   border-top-right-radius: 2px; 
 }
 
-.text-center { text-align: center; }
+.text-center { 
+  text-align: center;
+ }
 
 .radius { border-radius: 2px; }
 
@@ -111,7 +142,7 @@ h2 {
   transition: all 0.5s ease;
 }
   .card__article a:hover {
-    color: #2980b9;
+    color: #5d2d6d;
   }
 
 /* card action */
@@ -165,7 +196,7 @@ h2 {
 .share-toggle:before {
   content: "\f1e0";
   font-family: 'FontAwesome';
-  color: #3498db;
+  color: #5d2d6d;
 }
   .share-toggle.share-expanded:before {
     content: "\f00d";
@@ -205,13 +236,13 @@ h2 {
 .twitter {
   background-color: #00abe3; 
 }
-.instragram {
+.instagram {
   background-color: #00abe3; 
 }
 
 .facebook,
 .twitter,
-.instragram {
+.instagram {
   color: #fff;
 }
 

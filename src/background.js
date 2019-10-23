@@ -5,9 +5,10 @@ var rule = {
         ],
             actions: [new chrome.declarativeContent.ShowPageAction()]
       };
-var apiKey = "9824011a36ca45288a7b48e3a49522f7";
+var apiKey = "b8b1367fefdb4995a117ca642f6a87aa";
 var news_to_be_shown = [];
 var news_per_category = 5;
+
 var social_issue_candidates = ["Racism",
 "Religion","Drugs", "Alcohol", "Abuse", "Government",
 "Cyber security", "Social media","Education", "Disparity", 
@@ -30,23 +31,22 @@ function initStorage() {
 
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
     localStorage.date = date;
     localStorage.meme = "[]";
     localStorage.socialIssue = "[]";
     localStorage.alertCount = "0";
+    console.log('Initializing meme storage');
     var social_issues = [];
     var i = 1;
     while (i < 7) {
-      var idx = Math.floor(Math.random() * social_issue_candidates.length);
-      if (!social_issues.includes(social_issue_candidates[idx])) {
-        social_issues.push(social_issue_candidates[idx]);
-        i += 1;
-      }
+        var idx = Math.floor(Math.random() * social_issue_candidates.length);
+        if (!social_issues.includes(social_issue_candidates[idx])) {
+            social_issues.push(social_issue_candidates[idx]);
+            i += 1;
+        }
     }
     localStorage.newsList = JSON.stringify(social_issues);
     console.log("date is", localStorage.date);
-    console.log('Initializing meme storage');
 }
 
 chrome.runtime.onInstalled.addListener(function() {
@@ -155,7 +155,6 @@ chrome.runtime.onMessage.addListener(
             }
 
         }
-
       for (i = 0; i < x.length; i++) {
         var h = x[i];
         for (var keyword in res) {
@@ -164,7 +163,6 @@ chrome.runtime.onMessage.addListener(
           }
         }
       }
-
       chrome.storage.sync.set({"meme": res}, function(){
           console.log("updated meme counts");
         });

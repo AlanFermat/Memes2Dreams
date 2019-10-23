@@ -1,6 +1,5 @@
 var originalMemeList = [];
 var originalSocialIssueList = [];
-
 var social_issues = JSON.parse(localStorage.getItem("newsList"));
 var remove_count = 0;
 
@@ -8,8 +7,6 @@ for (var i = 1; i < 7; i++) {
 	let issue = document.getElementById("issue" + i.toString());
 	issue.innerHTML = social_issues[i-1];
 }
-
-
 console.log(localStorage);
 if (localStorage.meme !== undefined) {
 	originalMemeList = JSON.parse(localStorage.getItem("meme"));
@@ -142,7 +139,7 @@ function adjustMarginForMemes(num) {
 
 // Logic for adding social issues keywords
 
-
+var social_issues = ['Climate', 'LGBT', 'AIDS Awareness', 'Immigration', 'Gun Reform', 'Education'];
 let num_of_social_issues = 6;
 
 
@@ -262,3 +259,11 @@ report_button.onclick = function() {
 	});
 };
 
+
+refresh_button.onclick = function() {
+	chrome.tabs.getSelected(null, function(tab) {
+		var code = 'window.location.reload();';
+		chrome.tabs.executeScript(tab.id, {code: code});
+	  });
+	window.close();
+};
