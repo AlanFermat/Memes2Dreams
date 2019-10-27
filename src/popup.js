@@ -260,9 +260,24 @@ report_button.onclick = function() {
 
 
 refresh_button.onclick = function() {
-	chrome.tabs.getSelected(null, function(tab) {
-		var code = 'window.location.reload();';
-		chrome.tabs.executeScript(tab.id, {code: code});
-	  });
-	window.close();
+	chrome.storage.sync.get("socialIssue", function(result) {
+		var candidates = result.socialIssue;
+
+		if (candidates.length !== 0) {
+			chrome.tabs.getSelected(null, function(tab) {
+				var code = 'window.location.reload();';
+				chrome.tabs.executeScript(tab.id, {code: code});
+	  		});
+			window.close();
+		} else {
+			console.log("hi");
+			if ($('#reminder').is(':empty')){
+				console.log("here");
+				let reminder = document.createElement('p');
+				reminder.innerText = "Remember to select social issues :)";
+				reminder.setAttribute('style', 'padding: 10px; font-size: 14px; color: #5d2d6d;');
+				document.getElementById("reminder").appendChild(reminder);
+			}
+		}
+	});
 };
